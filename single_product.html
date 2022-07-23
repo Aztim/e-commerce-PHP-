@@ -6,26 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <link rel="stylesheet" href="./asssets/styles/styles.css">
-  <style>
-    .product img {
-      width: 100%;
-      height: auto;
-      box-sizing: border-box;
-      object-fit: cover;
-    }
-
-    .pagination a {
-      color: coral;
-    }
-
-    .pagination li:hover a {
-      color: #fff;
-      background-color: coral;
-    }
-
-  </style>
   <script src="https://use.fontawesome.com/d003a1a8dd.js"></script>
-  <title>Shop</title>
+  <title>Home</title>
 </head>
 <body>
 
@@ -59,19 +41,57 @@
             <i class="fa fa-user" aria-hidden="true"></i>
           </li>
         </ul>
+
+        <!-- <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> -->
       </div>
     </div>
   </nav>
 
-   <!-- Shoes -->
-   <section id="featured" class="my-5 py-5">
-    <div class="container  mt-5 py-5">
-      <h3>Our Products</h3>
-      <hr>
+  <!-- Single product -->
+  <section class="container single-product my-5 pt-5">
+    <div class="row mt-5">
+      <div class="col-lg-5 col-md-6 col-sm-12">
+        <img id="mainImg" src="./asssets/image/products/single_products/puma1.jpg" alt="" class="img-fluid w-100 pb-1">
+        <div class="small-img-group">
+          <div class="small-img-col">
+            <img src="asssets/image/products/single_products/puma1.jpg" alt="" width="100%" class="small-img" />
+          </div>
+          <div class="small-img-col">
+            <img src="asssets/image/products/single_products/puma2.jpg" alt="" width="100%" class="small-img" />
+          </div>
+          <div class="small-img-col">
+            <img src="asssets/image/products/single_products/puma3.jpg" alt="" width="100%" class="small-img" />
+          </div>
+          <div class="small-img-col">
+            <img src="asssets/image/products/single_products/puma4.jpg" alt="" width="100%" class="small-img" />
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-12 col-12">
+        <h6>Mens/Shoes</h6>
+        <h3 class="py-4">Men's Fashion</h3>
+        <h2>156$</h2>
+        <input type="number" value="1">
+        <button class="buy-btn">Add To Cart</button>
+        <h4 class="mt-5 mb-5">Product details</h4>
+        <span>The details of this product will be displayed shortly</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related products -->
+  <section id="related-products" class="my-5 pb-5">
+    <div class="container text-center mt-5 py-5">
+      <h3>Related products</h3>
+      <hr class="mx-auto">
       <p>Here you can check out our featured products</p>
     </div>
-    <div class="row mx-auto container">
-      <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
+    <div class="row mx-auto container-fluid text-dark">
+      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
         <img class="img-fluid mb-3" src="./asssets/image/products/shoes1.jpg" alt="">
         <div class="star">
           <i class="fas fa-star"></i>
@@ -123,76 +143,14 @@
         <button class="buy-btn">Buy Now</button>
       </div>
     </div>
-    <div class="row mx-auto container">
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img class="img-fluid mb-3" src="./asssets/image/products/accessor1.png" alt="">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h5 class="p-name text-dark">Sports Shoes</h5>
-        <h4 class="p-price text-dark">$199.8</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img class="img-fluid mb-3" src="./asssets/image/products/accessor2.png" alt="">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h5 class="p-name text-dark">Sports Shoes</h5>
-        <h4 class="p-price text-dark">$199.8</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img class="img-fluid mb-3" src="./asssets/image/products/accessor3.png" alt="">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h5 class="p-name text-dark">Sports Shoes</h5>
-        <h4 class="p-price text-dark">$199.8</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-
-      <div class="product text-center col-lg-3 col-md-4 col-sm-12 ">
-        <img class="img-fluid mb-3" src="./asssets/image/products/accessor4.png" alt="">
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h5 class="p-name text-dark">Sports Shoes</h5>
-        <h4 class="p-price text-dark">$199.8</h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-
-      <nav aria-label="Page navigation example">
-        <ul class="pagination mt-5">
-          <li class="page-item"><a href="#" class="page-link">Previous</a></li>
-          <li class="page-item"><a href="#" class="page-link">1</a></li>
-          <li class="page-item"><a href="#" class="page-link">2</a></li>
-          <li class="page-item"><a href="#" class="page-link">3</a></li>
-          <li class="page-item"><a href="#" class="page-link">Next</a></li>
-        </ul>
-      </nav>
-    </div>
   </section>
+
 
   <footer class="mt-5 py-5">
     <div class="row container mx-auto pt-5">
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
         <img class="logo" src="" alt="">
-        <p class="pt-3">We providee the best products for the most affordable prices</p>
+        <p class="pt-3">We provide the best products for the most affordable prices</p>
       </div>
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
         <h5 class="pb-2">Featured</h5>
@@ -229,12 +187,12 @@
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
         <h5 class="pb-2">Instagram</h5>
         <div class="row">
-          <img src="/asssets/image/insta1.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/insta2.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/insta3.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/insta4.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/insta5.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/insta6.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="/asssets/image/instagram/insta1.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="/asssets/image/instagram/insta2.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="/asssets/image/instagram/insta3.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="/asssets/image/instagram/insta4.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="/asssets/image/instagram/insta5.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="/asssets/image/instagram/insta6.jpg" alt="" class="img-fluid w-25 h-100 m-2">
         </div>
       </div>
     </div>
@@ -253,4 +211,16 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
+  <script>
+    let mainImg = document.getElementById('mainImg');
+    let smallImg = document.getElementsByClassName('small-img');
+
+    for (let i = 0; i < 4; i++) {
+      smallImg[i].onclick = function() {
+        mainImg.src = smallImg[i].src;
+      }
+    }
+
+  </script>
 </body>
