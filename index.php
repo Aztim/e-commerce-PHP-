@@ -107,8 +107,9 @@
 
       <?php include('server/get_featured_products.php'); ?>
       <?php while($row=$featured_products->fetch_assoc()) { ?>
+
         <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-          <img class="img-fluid mb-3" src="./asssets/image/products/<?php echo $row['product_image']; ?>" alt="">
+          <!-- <img class="img-fluid mb-3" src="./asssets/image/products/<?php echo $row['product_image']; ?>" alt=""> -->
           <div class="star">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
