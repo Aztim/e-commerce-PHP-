@@ -3,13 +3,13 @@
   if(isset($_GET['product_id'])) {
     $product_id = $GET['product_id'];
     // $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
-    $stmt = $conn->prepare("SELECT * FROM products LIMIT 4");
+    // $stmt = $conn->prepare("SELECT * FROM products LIMIT 4");
     $stmt->bind_param("i",$product_id);
-    
+
     $stmt->execute();
 
     $product = $stmt->get_result();
-    
+
   }else{
     header('location: index.php');
   }
@@ -89,7 +89,7 @@
             </div>
           </div> -->
         </div>
-      
+
 
         <div class="col-lg-6 col-md-12 col-12">
           <h6>Mens/Shoes</h6>
@@ -106,7 +106,7 @@
 
     </div>
   </section>
-  
+
   <!-- Related products -->
   <section id="related-products" class="my-5 pb-5">
     <div class="container text-center mt-5 py-5">
