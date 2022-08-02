@@ -1,3 +1,21 @@
+<?php
+  include('./server/connection.php');
+  if(isset($_GET['product_id'])) {
+    $product_id = $GET['product_id'];
+    // $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
+    $stmt = $conn->prepare("SELECT * FROM products LIMIT 4");
+    $stmt->bind_param("i",$product_id);
+    
+    $stmt->execute();
+
+    $product = $stmt->get_result();
+    
+  }else{
+    header('location: index.php');
+  }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +39,7 @@
       <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="index.php">Home</a>
           </li>
 
           <li class="nav-item">
@@ -53,36 +71,42 @@
   <!-- Single product -->
   <section class="container single-product my-5 pt-5">
     <div class="row mt-5">
-      <div class="col-lg-5 col-md-6 col-sm-12">
-        <img id="mainImg" src="./asssets/image/products/single_products/shoes1.jpg" alt="" class="img-fluid w-100 pb-1">
-        <div class="small-img-group">
-          <div class="small-img-col">
-            <img src="asssets/image/products/single_products/shoes1.jpg" alt="" width="100%" class="small-img" />
-          </div>
-          <div class="small-img-col">
-            <img src="asssets/image/products/single_products/shoes1_1.jpg" alt="" width="100%" class="small-img" />
-          </div>
-          <div class="small-img-col">
-            <img src="asssets/image/products/single_products/shoes1_2.jpg" alt="" width="100%" class="small-img" />
-          </div>
-          <div class="small-img-col">
-            <img src="asssets/image/products/single_products/shoes1_3.jpg" alt="" width="100%" class="small-img" />
-          </div>
+      <?php while($row = $product->fetch_assoc()) { ?>
+        <div class="col-lg-5 col-md-6 col-sm-12">
+          <!-- <img id="mainImg" src="./asssets/image/products/<?php echo $row['product_image']; ?>" alt="" class="img-fluid w-100 pb-1"> -->
+          <!-- <div class="small-img-group">
+            <div class="small-img-col">
+              <img src="asssets/image/products/single_products/<?php echo $row['product_image']; ?>" alt="" width="100%" class="small-img" />
+            </div>
+            <div class="small-img-col">
+              <img src="asssets/image/products/single_products/<?php echo $row['product_image2']; ?>" alt="" width="100%" class="small-img" />
+            </div>
+            <div class="small-img-col">
+              <img src="asssets/image/products/single_products/<?php echo $row['product_image3']; ?>" alt="" width="100%" class="small-img" />
+            </div>
+            <div class="small-img-col">
+              <img src="asssets/image/products/single_products/<?php echo $row['product_image4']; ?>" alt="" width="100%" class="small-img" />
+            </div>
+          </div> -->
         </div>
-      </div>
+      
 
-      <div class="col-lg-6 col-md-12 col-12">
-        <h6>Mens/Shoes</h6>
-        <h3 class="py-4">Men's Fashion</h3>
-        <h2>156$</h2>
-        <input type="number" value="1">
-        <button class="buy-btn">Add To Cart</button>
-        <h4 class="mt-5 mb-5">Product details</h4>
-        <span>The details of this product will be displayed shortly</span>
-      </div>
+        <div class="col-lg-6 col-md-12 col-12">
+          <h6>Mens/Shoes</h6>
+          <h3 class="py-4"><?php echo $row['product_name']; ?></h3>
+          <h2>$<?php echo $row['product_price']; ?></h2>
+          <input type="number" value="1">
+          <button class="buy-btn">Add To Cart</button>
+          <h4 class="mt-5 mb-5">Product details</h4>
+          <span><?php echo $row['product_description']; ?></span>
+        </div>
+
+      <?php } ?>
+      <?php echo $row; ?>
+
     </div>
   </section>
-
+  
   <!-- Related products -->
   <section id="related-products" class="my-5 pb-5">
     <div class="container text-center mt-5 py-5">
@@ -92,7 +116,7 @@
     </div>
     <div class="row mx-auto container-fluid text-dark">
       <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img class="img-fluid mb-3" src="./asssets/image/products/shoes1.jpg" alt="">
+        <img class="img-fluid mb-3" src="./asssets/image/products/shoes1.png" alt="">
         <div class="star">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -105,7 +129,7 @@
       </div>
 
       <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img class="img-fluid mb-3" src="./asssets/image/products/shoes2.jpeg" alt="">
+        <img class="img-fluid mb-3" src="./asssets/image/products/shoes2.png" alt="">
         <div class="star">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -118,7 +142,7 @@
       </div>
 
       <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img class="img-fluid mb-3" src="./asssets/image/products/shoes3.jpeg" alt="">
+        <img class="img-fluid mb-3" src="./asssets/image/products/shoes3.png" alt="">
         <div class="star">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -131,7 +155,7 @@
       </div>
 
       <div class="product text-center col-lg-3 col-md-4 col-sm-12 ">
-        <img class="img-fluid mb-3" src="./asssets/image/products/shoes4.jpeg" alt="">
+        <img class="img-fluid mb-3" src="./asssets/image/products/shoes4.png" alt="">
         <div class="star">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -149,7 +173,7 @@
   <footer class="mt-5 py-5">
     <div class="row container mx-auto pt-5">
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-        <img class="logo" src="/asssets/image/logo/logo.png" alt="">
+        <img class="logo" src="./asssets/image/logo/logo.png" alt="">
         <p class="pt-3">We providee the best products for the most affordable prices</p>
       </div>
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
@@ -187,12 +211,12 @@
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
         <h5 class="pb-2">Instagram</h5>
         <div class="row">
-          <img src="/asssets/image/instagram/insta1.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta2.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta3.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta4.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta5.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta6.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta1.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta2.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta3.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta4.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta5.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta6.jpg" alt="" class="img-fluid w-25 h-100 m-2">
         </div>
       </div>
     </div>
@@ -212,7 +236,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 
-  <script>
+  <!-- <script>
     let mainImg = document.getElementById('mainImg');
     let smallImg = document.getElementsByClassName('small-img');
 
@@ -222,5 +246,5 @@
       }
     }
 
-  </script>
+  </script> -->
 </body>
