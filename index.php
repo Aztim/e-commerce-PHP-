@@ -109,7 +109,7 @@
       <?php while($row=$featured_products->fetch_assoc())  { ?>
 
         <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-          <img class="img-fluid mb-3" src="./asssets/image/products/<?php echo $row['product_image']; ?>" alt="">
+          <img class="img-fluid mb-3" src="./asssets/image/products/<?php echo $row['product_image1']; ?>" alt="">
           <div class="star">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -118,7 +118,10 @@
           </div>
           <h5 class="p-name text-dark"><?php echo $row['product_name']; ?></h5>
           <h4 class="p-price text-dark">$<?php echo $row['product_price']; ?></h4>
-          <button class="buy-btn">Buy Now</button>
+
+           <a href="<?php echo "single_product.php?product_id=". $row['product_id'];?>">
+            <button class="buy-btn">Buy Now</button>
+          </a>
         </div>
       <?php } ?>
     </div>
@@ -147,7 +150,7 @@
       <?php while($row=$accessories->fetch_assoc()) { ?>
 
         <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-          <img class="img-fluid mb-3" src="./asssets/image/products/<?php echo $row['product_image']; ?>" alt="">
+          <img class="img-fluid mb-3" src="./asssets/image/products/<?php echo $row['product_image1']; ?>" alt="">
           <div class="star">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -156,7 +159,7 @@
           </div>
           <h5 class="p-name text-dark"><?php echo $row['product_name']; ?></h5>
           <h4 class="p-price text-dark">$<?php echo $row['product_price']; ?></h4>
-          <!-- <button class="buy-btn">Buy Now</button> -->
+
           <a href="<?php echo "single_product.php?product_id=". $row['product_id'];?>">
             <button class="buy-btn">Buy Now</button>
           </a>

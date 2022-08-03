@@ -1,9 +1,11 @@
 <?php
   include('./server/connection.php');
+
   if(isset($_GET['product_id'])) {
-    $product_id = $GET['product_id'];
-    // $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
-    // $stmt = $conn->prepare("SELECT * FROM products LIMIT 4");
+    $product_id = $_GET['product_id'];
+
+    $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
+
     $stmt->bind_param("i",$product_id);
 
     $stmt->execute();
@@ -13,6 +15,7 @@
   }else{
     header('location: index.php');
   }
+
 ?>
 
 
@@ -73,10 +76,10 @@
     <div class="row mt-5">
       <?php while($row = $product->fetch_assoc()) { ?>
         <div class="col-lg-5 col-md-6 col-sm-12">
-          <!-- <img id="mainImg" src="./asssets/image/products/<?php echo $row['product_image']; ?>" alt="" class="img-fluid w-100 pb-1"> -->
-          <!-- <div class="small-img-group">
-            <div class="small-img-col">
-              <img src="asssets/image/products/single_products/<?php echo $row['product_image']; ?>" alt="" width="100%" class="small-img" />
+          <img id="mainImg" src="asssets/image/products/single_products/<?php echo $row['product_image1']; ?>" alt="" class="img-fluid w-100 pb-1">
+          <div class="small-img-group">
+          <div class="small-img-col">
+              <img src="asssets/image/products/single_products/<?php echo $row['product_image1']; ?>" alt="" width="100%" class="small-img" />
             </div>
             <div class="small-img-col">
               <img src="asssets/image/products/single_products/<?php echo $row['product_image2']; ?>" alt="" width="100%" class="small-img" />
@@ -84,10 +87,11 @@
             <div class="small-img-col">
               <img src="asssets/image/products/single_products/<?php echo $row['product_image3']; ?>" alt="" width="100%" class="small-img" />
             </div>
+
             <div class="small-img-col">
               <img src="asssets/image/products/single_products/<?php echo $row['product_image4']; ?>" alt="" width="100%" class="small-img" />
             </div>
-          </div> -->
+          </div>
         </div>
 
 
@@ -102,7 +106,6 @@
         </div>
 
       <?php } ?>
-      <?php echo $row; ?>
 
     </div>
   </section>
@@ -236,7 +239,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 
-  <!-- <script>
+  <script>
     let mainImg = document.getElementById('mainImg');
     let smallImg = document.getElementsByClassName('small-img');
 
@@ -246,5 +249,5 @@
       }
     }
 
-  </script> -->
+  </script>
 </body>
