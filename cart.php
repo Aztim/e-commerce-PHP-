@@ -1,3 +1,79 @@
+<?php
+  session_start();
+
+  if(isset($_POST['add_to_cart'])){
+    //if user has already added a product to cart
+    if(isset($_SESSION['cart'])){
+
+      $products_array_ids = array_column($_SESSION['cart'], "product_id");
+      //if product has already been added to cart or not
+      if(!in_array($_POST['product_id'], $products_array_ids)) {
+
+        $product_id = $_POST['product_id'];
+
+        $product_array = array(
+          'product_id' => $_POST['product_id'],
+          'product_name' => $_POST['product_name'],
+          'product_price' => $_POST['product_price'],
+          'product_image' => $_POST['product_image'],
+          'product_quantity' => $_POST['product_quantity']
+        );
+
+        $_SESSION['cart'][$product_id] = $product_array;
+
+      //product has already been added
+      }else {
+        echo '<script>alert("Product was already added to the cart");</script>';
+        // echo '<script>window.location="index.php";</script>';
+      }
+
+
+    }else{
+      $product_id = $_POST['product_id'];
+      $product_name = $_POST['product_name'];
+      $product_price = $_POST['product_price'];
+      $product_image = $_POST['product_image'];
+      $product_quantity = $_POST['product_quantity'];
+
+      $product_array = array(
+        'product_id' => $product_id,
+        'product_name' => $product_name,
+        'product_price' => $product_price,
+        'product_image' => $product_image,
+        'product_quantity' => $product_quantity
+      );
+
+      $_SESSION['cart'][$product_id] = $product_array;
+
+
+    }
+
+  //remove product from cart
+  }else if(isset($_POST['remove_product'])){
+    $product_id = $_POST['product_id'];
+    unset($_SESSION['cart'][$product_id]);
+
+
+  }else if(isset($_POST['product_quantity'])) {
+    //we get id and quantity from the form
+    $product_id = $_POST['product_id'];
+    $product_quantity = $_POST['product_quantity'];
+
+    //get the product array from the session
+    $product_array = $_SESSION['cart'][$product_id];
+
+    //update product quantity
+    $product_array['product_quantity'] = $product_quantity;
+
+    //return array back its
+    $_SESSION['cart'][$product_id] = $product_array;
+
+  }else{
+    header('location: index.php');
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +96,7 @@
       <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="index.php">Home</a>
           </li>
 
           <li class="nav-item">
@@ -64,22 +140,31 @@
         <th>Subtotal</th>
       </tr>
 
+      <?php foreach($_SESSION['cart'] as $key =>  $value){ ?>
+
       <tr>
         <td>
           <div class="product-info">
-            <img src="./asssets/image/products/accessor1.png" alt="">
+            <img src="./asssets/image/products/<?php echo $value['product_image']; ?>" alt="">
             <div>
-              <p>White Shoes</p>
-              <small><span>$</span>155</small>
+              <p><?php echo $value['product_name']; ?></p>
+              <small><span>$</span><?php echo $value['product_price']; ?></small>
               <br>
-              <a href="#" class="remove-btn">Remove</a>
+
+              <form method="POST" action="cart.php">
+                <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>" />
+                <input type="submit" name="remove_product" class="remove-btn" value="remove" />
+              </form>
             </div>
           </div>
         </td>
 
         <td>
-          <input type="number" value="1">
-          <a href="" class="edit-btn">Edit</a>
+          <form method="POST" action="cart.php">
+          <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>" />
+          <input type="number" name="product_quantity" value="<?php echo $value['product_quantity']; ?>" />
+          <input type="submit" class="edit-btn" value="edit" name="edit_quantity">
+          </form>
         </td>
 
         <td>
@@ -88,53 +173,7 @@
         </td>
       </tr>
 
-      <tr>
-        <td>
-          <div class="product-info">
-            <img src="./asssets/image/products/accessor1.png" alt="">
-            <div>
-              <p>White Shoes</p>
-              <small><span>$</span>155</small>
-              <br>
-              <a href="#" class="remove-btn">Remove</a>
-            </div>
-          </div>
-        </td>
-
-        <td>
-          <input type="number" value="1">
-          <a href="" class="edit-btn">Edit</a>
-        </td>
-
-        <td>
-          <span>$</span>
-          <span class="product-price">155</span>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <div class="product-info">
-            <img src="./asssets/image/products/accessor1.png" alt="">
-            <div>
-              <p>White Shoes</p>
-              <small><span>$</span>155</small>
-              <br>
-              <a href="#" class="remove-btn">Remove</a>
-            </div>
-          </div>
-        </td>
-
-        <td>
-          <input type="number" value="1">
-          <a href="" class="edit-btn">Edit</a>
-        </td>
-
-        <td>
-          <span>$</span>
-          <span class="product-price">155</span>
-        </td>
-      </tr>
+      <?php } ?>
     </table>
 
     <div class="cart-total">
@@ -197,12 +236,12 @@
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
         <h5 class="pb-2">Instagram</h5>
         <div class="row">
-          <img src="/asssets/image/instagram/insta1.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta2.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta3.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta4.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta5.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta6.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta1.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta2.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta3.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta4.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta5.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta6.jpg" alt="" class="img-fluid w-25 h-100 m-2">
         </div>
       </div>
     </div>

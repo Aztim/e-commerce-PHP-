@@ -374,16 +374,24 @@ footer .copyright img {
   color: #fb774b;
 }
 
-.cart .remove-btn {
+.cart .remove-btn{
   color: #fb774b;
   text-decoration: none;
   font-size: 14px;
+  background-color: white;
+  border: none;
+  width: 50%;
+  text-align: left;
 }
 
 .cart .edit-btn {
   color: #fb774b;
   text-decoration: none;
   font-size: 15px;
+  font-weight: bold;
+  /* background-color: white; */
+  border: none;
+  width: 20%;
 }
 
 .cart .product-info p {
