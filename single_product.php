@@ -96,7 +96,7 @@
 
 
         <div class="col-lg-6 col-md-12 col-12">
-          <h6>Mens/Shoes</h6>
+          <h6>Shoes</h6>
           <h3 class="py-4"><?php echo $row['product_name']; ?></h3>
           <h2>$<?php echo $row['product_price']; ?></h2>
 
@@ -127,7 +127,7 @@
     </div>
     <div class="row mx-auto container-fluid text-dark">
       <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img class="img-fluid mb-3" src="./asssets/image/products/shoes1.png" alt="">
+        <img class="img-fluid mb-3" src="./asssets/image/products/shoes1.jpg" alt="">
         <div class="star">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -140,7 +140,7 @@
       </div>
 
       <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img class="img-fluid mb-3" src="./asssets/image/products/shoes2.png" alt="">
+        <img class="img-fluid mb-3" src="./asssets/image/products/shoes2.jpg" alt="">
         <div class="star">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -153,7 +153,7 @@
       </div>
 
       <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-        <img class="img-fluid mb-3" src="./asssets/image/products/shoes3.png" alt="">
+        <img class="img-fluid mb-3" src="./asssets/image/products/shoes3.jpg" alt="">
         <div class="star">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -166,7 +166,7 @@
       </div>
 
       <div class="product text-center col-lg-3 col-md-4 col-sm-12 ">
-        <img class="img-fluid mb-3" src="./asssets/image/products/shoes4.png" alt="">
+        <img class="img-fluid mb-3" src="./asssets/image/products/shoes4.jpg" alt="">
         <div class="star">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
