@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,42 +56,17 @@
       </div>
     </nav>
 
-    <!-- Checkout -->
+    <!-- Payment -->
   <section class="my-5 py-5">
     <div class="container text-center mt-3 pt-5">
-      <h2 class="form-weight-bold">Check out</h2>
+      <h2 class="form-weight-bold">Payment</h2>
       <hr class="mx-auto">
     </div>
-    <div class="mx-auto container">
-      <form action="" id="checkout-form">
-        <div class="form-group checkout-small-element">
-          <label for="">Name</label>
-          <input type="text" class="form-control" id="checkout-name" name="name" placeholder="Name" required />
-        </div>
 
-        <div class="form-group checkout-small-element">
-          <label for="">Email</label>
-          <input type="text" class="form-control" id="checkout-email" name="email" placeholder="Email" required />
-        </div>
-
-        <div class="form-group checkout-small-element">
-          <label for="">Phone</label>
-          <input type="phone" class="form-control" id="checkout-phone" name="phone" placeholder="Phone" required />
-        </div>
-
-        <div class="form-group checkout-small-element">
-          <label for="">City</label>
-          <input type="text" class="form-control" id="checkout-city" name="city" placeholder="City" required />
-        </div>
-        <div class="form-group checkout-large-element">
-          <label for="">Address</label>
-          <input type="text" class="form-control" id="checkout-address" name="address" placeholder="Address" required />
-        </div>
-
-        <div class="form-group checkout-btn-container">
-          <input type="submit" class="btn" id="checkout-btn" value="Checkout" />
-        </div>
-      </form>
+    <div class="mx-auto container text-center">
+      <p><?php echo $_GET['order_status'];?></p>
+      <p>Total payment: $<?php echo $_SESSION['total'];?></p>
+      <input class="btn btn-primary" type="submit" value="Pay Now">
     </div>
   </section>
 
@@ -130,12 +111,12 @@
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
         <h5 class="pb-2">Instagram</h5>
         <div class="row">
-          <img src="/asssets/image/instagram/insta1.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta2.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta3.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta4.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta5.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-          <img src="/asssets/image/instagram/insta6.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta1.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta2.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta3.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta4.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta5.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+          <img src="./asssets/image/instagram/insta6.jpg" alt="" class="img-fluid w-25 h-100 m-2">
         </div>
       </div>
     </div>

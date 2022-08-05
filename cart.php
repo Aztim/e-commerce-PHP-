@@ -77,7 +77,7 @@
     calculateTotalCart();
 
   }else{
-    header('location: index.php');
+    // header('location: index.php');
   }
 
 
@@ -214,7 +214,9 @@
     </div>
 
     <div class="checkout-container">
-      <button class="btn checkout-btn">Checkout</button>
+      <form method="POST" action="checkout.php">
+        <input type="submit" class="btn checkout-btn" value="Checkout" name="checkout" />
+      </form>
     </div>
   </section>
 

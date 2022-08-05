@@ -1,3 +1,17 @@
+<?php
+if(isset($_POST['register'])){
+  $name = $_POST['name'],
+  $email = $_POST['email'],
+  $password = $_POST['password '],
+  $confirmPassword = $_POST['confirmPassword']
+
+}else{
+
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -57,7 +71,7 @@
         <hr class="mx-auto">
       </div>
       <div class="mx-auto container">
-        <form action="" id="register-form">
+        <form id="register-form" method="POST" action="register.php">
           <div class="form-group">
             <label for="">Name</label>
             <input type="text" class="form-control" id="register-name" name="name" placeholder="Name" required />
@@ -79,7 +93,7 @@
           </div>
 
           <div class="form-group">
-            <input type="submit" class="btn" id="register-btn" value="Register" />
+            <input type="submit" class="btn" id="register-btn" name="Register" value="Register" />
           </div>
           <div class="form-group">
             <a href="" id="login-url" class="btn">Dou you have an account? Login</a>
