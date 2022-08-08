@@ -4,7 +4,6 @@ include('./server/connection.php');
 
 
 if(isset($_POST['register'])){
-  echo $_POST['register'];
   $name = $_POST['name'];
   $email = $_POST['email'];
   $password = $_POST['password'];

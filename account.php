@@ -1,3 +1,13 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION['logged_in'])){
+    header('location: login.php');
+    exit;
+  }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -58,9 +68,9 @@
           <h3 class="font-weight-bold">Account Info</h3>
           <hr class="mx-auto">
           <div class="account-info">
-            <p>Name<span>Tim</span></p>
-            <p>Email<span>Tim@email.com</span></p>
-            <p><a href="" id="orders-btn">Your orders</a></p>
+            <p>Name<span><?php if(isset($_SESSION['user_name'])){echo $_SESSION['user_name'];} ?></span></p>
+            <p>Email<span><?php if(isset($_SESSION['user_email'])){echo $_SESSION['user_email'];} ?></span></p>
+            <p><a href="#orders" id="orders-btn">Your orders</a></p>
             <p><a href="" id="logout-btn">Logout</a></p>
           </div>
         </div>
@@ -86,7 +96,7 @@
     </section>
 
     <!-- Orders -->
-    <section class="orders container my-5 py-3">
+    <section id="orders" class="orders container my-5 py-3">
       <div class="container mt-2">
         <h2 class="font-weight-bold text-center">You Orders</h2>
         <hr class="mx-auto">
@@ -157,12 +167,12 @@
         <div class="footer-one col-lg-3 col-md-6 col-sm-12">
           <h5 class="pb-2">Instagram</h5>
           <div class="row">
-            <img src="/asssets/image/instagram/insta1.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-            <img src="/asssets/image/instagram/insta2.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-            <img src="/asssets/image/instagram/insta3.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-            <img src="/asssets/image/instagram/insta4.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-            <img src="/asssets/image/instagram/insta5.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-            <img src="/asssets/image/instagram/insta6.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+            <img src="./asssets/image/instagram/insta1.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+            <img src="./asssets/image/instagram/insta2.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+            <img src="./asssets/image/instagram/insta3.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+            <img src="./asssets/image/instagram/insta4.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+            <img src="./asssets/image/instagram/insta5.jpg" alt="" class="img-fluid w-25 h-100 m-2">
+            <img src="./asssets/image/instagram/insta6.jpg" alt="" class="img-fluid w-25 h-100 m-2">
           </div>
         </div>
       </div>
