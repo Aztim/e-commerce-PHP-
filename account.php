@@ -43,6 +43,22 @@
     }
 
   }
+
+
+  //get orders
+  if(isset($_SESSION['logged_in'])){
+
+  $user_id = $_SESSION['user_id'];
+
+  $stmt = $conn->prepare("SELECT * FROM orders WHERE user_id=? ");
+
+  $stmt->bind_param('i', $user_id);
+
+  $stmt->execute();
+
+  $orders = $stmt->get_result();
+
+  }
 ?>
 
 
@@ -146,24 +162,44 @@
 
       <table class="mt-5 pt-5">
         <tr>
-          <th>Product</th>
-          <th>Date</th>
+          <th>Order id</th>
+          <th>Order cost</th>
+          <th>Order status</th>
+          <th>Order date</th>
+          <th>Order details</th>
         </tr>
 
-        <tr>
-          <td>
-            <div class="product-info">
-              <img src="asssets/image/products/shoes1.jpg" alt="">
-              <div>
-                <p class="mt-3">White Shoes</p>
+        <?php while($row = $orders->fetch_assoc()){ ?>
+
+          <tr>
+            <td>
+              <div class="product-info">
+                <!-- <img src="asssets/image/products/shoes1.jpg" alt=""> -->
+                <div>
+                  <p class="mt-3"><?php echo $row['order_id'] ?></p>
+                </div>
               </div>
-            </div>
-          </td>
+            </td>
 
-          <td>
-            <span>2026-5-8</span>
-          </td>
-        </tr>
+            <td>
+              <span><?php echo $row['order_cost'] ?></span>
+            </td>
+
+            <td>
+              <span><?php echo $row['order_status'] ?></span>
+            </td>
+
+            <td>
+              <span><?php echo $row['order_date'] ?></span>
+            </td>
+
+            <td>
+              <input type="submit" class="btn order-details-btn" value="details" />
+            </td>
+          </tr>
+
+        <?php } ?>
+
       </table>
     </section>
 

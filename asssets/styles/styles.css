@@ -516,11 +516,11 @@ th:last-child{
   padding: 5px 10px;
   color: #fff;
   background-color: #fb774b;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .orders th:nth-child(2) {
-  text-align: right;
+  /* text-align: center; */
 }
 
 .orders td {
@@ -531,6 +531,12 @@ th:last-child{
   width: 80px;
   height: 80px;
   margin-right: 10px;
+}
+
+.orders .order-details-btn{
+  color: #fff;
+  background-color: #fb774b;
+
 }
 
 /* Checkout */
