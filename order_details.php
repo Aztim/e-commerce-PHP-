@@ -1,4 +1,23 @@
 
+<?php
+  include('./server/connection.php');
+
+  if(isset($_POST['order_datails_btn']) && isset($_POST['order_id'])) {
+    $order_id = $_POST['order_id'];
+
+    $stmt = $conn->prepare("SELECT * FROM order_items WHERE order_id = ?");
+
+    $stmt->bind_param('i', $order_id);
+
+    $stmt->execute();
+
+    $order_details = $stmt->get_result();
+  }else{
+    header('location: account.php');
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,6 +71,50 @@
     </nav>
 
 
+    <section id="orders" class="orders container my-5 py-3">
+      <div class="container mt-5">
+        <h2 class="font-weight-bold text-center">Order details</h2>
+        <hr class="mx-auto">
+      </div>
+
+      <table class="mt-5 pt-5 mx-auto">
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+
+        <?php while($row= $order_details->fetch_assoc()) {?>
+          <tr>
+            <td>
+              <div class="product-info">
+                <img src="asssets/image/products/<?php echo $row['product_image']; ?>" alt="">
+                <div>
+                  <p class="mt-3"><?php echo $row['product_name']; ?></p>
+                </div>
+              </div>
+            </td>
+
+            <td>
+              <span>$<?php echo $row['product_price']; ?></span>
+            </td>
+
+            <td>
+              <span></span>
+            </td>
+
+            <td>
+              <span><?php echo $row['product_quantity']; ?></span>
+            </td>
+<!--
+            <td>
+              <input type="submit" class="btn order-details-btn" value="details" />
+            </td> -->
+          </tr>
+        <?php }?>
+
+      </table>
+    </section>
 
 
 

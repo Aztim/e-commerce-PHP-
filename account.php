@@ -194,7 +194,10 @@
             </td>
 
             <td>
-              <input type="submit" class="btn order-details-btn" value="details" />
+              <form method="POST" action="order_details.php">
+                <input type="hidden" value="<?php echo $row['order_id']; ?>" name="order_id" />
+                <input type="submit" class="btn order-details-btn" name="order-details-btn" value="details" />
+              </form>
             </td>
           </tr>
 
