@@ -111,7 +111,7 @@
               <input type="submit" class="btn order-details-btn" value="details" />
             </td> -->
           </tr>
-        <?php }?>
+        <?php } ?>
 
       </table>
     </section>
