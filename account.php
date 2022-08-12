@@ -195,6 +195,7 @@
 
             <td>
               <form method="POST" action="order_details.php">
+                <input type="hidden" value="<?php echo $row['order_status']; ?>" name="order_status" />
                 <input type="hidden" value="<?php echo $row['order_id']; ?>" name="order_id" />
                 <input type="submit" class="btn order-details-btn" name="order_datails_btn" value="details" />
               </form>
