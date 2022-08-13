@@ -80,7 +80,7 @@
     </nav>
 
 
-    <section id="orders" class="orders container my-5 py-3">
+    <section id="orders" class="orders container my-5 py-5">
       <div class="container mt-5">
         <h2 class="font-weight-bold text-center">Order details</h2>
         <hr class="mx-auto">
@@ -106,10 +106,6 @@
 
             <td>
               <span>$<?php echo $row['product_price']; ?></span>
-            </td>
-
-            <td>
-              <span></span>
             </td>
 
             <td>

@@ -205,6 +205,14 @@ button:hover {
   transform: translateY(50px);
   opacity: 0;
   transition: 0.3s all;
+  color: #fff;
+}
+
+.shop-buy-btn{
+  background-color: #fb774b;
+  opacity: 1;
+  color: #fff;
+  text-decoration: none;
 }
 
 .product:hover .buy-btn {
