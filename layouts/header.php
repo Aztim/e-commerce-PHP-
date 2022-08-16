@@ -33,12 +33,12 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact Us</a>
+            <a class="nav-link" href="contact.php">Contact Us</a>
           </li>
 
           <li class="nav-item icons">
             <a href="cart.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
-            <a href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a>
+            <a href="account.php"><i class="fa fa-user" aria-hidden="true"></i></a>
           </li>
         </ul>
 
